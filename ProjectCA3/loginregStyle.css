@@ -14,6 +14,11 @@
     background-repeat: no-repeat;
 }
 
+.logo {
+    text-align: center;
+    margin-top: 15px;
+}
+
 .container {
     width: 350px;
     height: 450px;
