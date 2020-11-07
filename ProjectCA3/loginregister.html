@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div class="main">
         <div class="logo">
             <img src="Images/Logo.1.png" alt="">
@@ -25,23 +26,26 @@
                 <img src="Images/gp.png" alt="">
             </div>
 
-            <form action="" id="login" class="input-grp">
-                <input type="text" class="input-field" placeholder="User Id">
-                <input type="text" class="input-field" placeholder="Enter Password">
+            <form action="" id="login" class="input-grp" name="log">
+                <input type="text" class="input-field" placeholder="User Id" name="userid">
+                <input type="text" class="input-field" placeholder="Enter Password" name="pass">
 
-                <input type="checkbox" class="checkbox"> <span>Remember Password</span>
+                <input type="checkbox" class="checkbox" id="myCheck" required> <span>Remember Password</span>
 
-                <a href="index1.html" style="text-decoration: none;"><button type="button" class="submit-btn">Login</button></a>
+                <a href="index1.html" style="text-decoration: none;">
+                    <button type="button" class="submit-btn" onclick="return logg();">Login</button>
+                </a>
             </form>
 
-            <form action="" id="register" class="input-grp">
-                <input type="text" class="input-field" placeholder="User Id">
-                <input type="email" class="input-field" placeholder="Email Id">
-                <input type="text" class="input-field" placeholder="Enter Password">
+            <form action="" id="register" class="input-grp" name="reg">
+                <input type="text" class="input-field" placeholder="User Id" name="userid">
+                <input type="email" class="input-field" placeholder="Email Id" name="email">
+                <input type="text" class="input-field" placeholder="Enter Password" name="pass">
 
-                <input type="checkbox" class="checkbox"> <span>I agree to the terms & conditions</span>
+                <input type="checkbox" class="checkbox" id="check"> <span>I agree to the terms & conditions</span>
 
-                <a href="index1.html" style="text-decoration: none;"> <button type="button" class="submit-btn">Register</button></a>
+                <a href="index1.html" style="text-decoration: none;">
+                    <button type="button" class="submit-btn" onclick="return logg1();">Register</button></a>
             </form>
         </div>
 
@@ -62,6 +66,53 @@
             x.style.left = "50px";
             y.style.left = "450px";
             z.style.left = "0px";
+        }
+
+        function logg() {
+            var x = document.forms["log"]["userid"].value;
+            if (x == "") {
+                alert("Please provide your user id");
+                return false;
+            } else {
+                var y = document.forms["log"]["pass"].value;
+                if (y == "") {
+                    alert("Please provide your password");
+                    return false;
+                } else if (y.length < 5) {
+                    alert("Password length cannot be less than 5 characters");
+                    return false;
+                }
+            }
+        }
+
+        function logg1() {
+            var x = document.forms["reg"]["userid"].value;
+            if (x == "") {
+                alert("Please provide your user id");
+                return false;
+            } else {
+                var z = document.forms["reg"]["email"].value;
+                var regg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if (regg.test(z) == false) {
+                    alert("Please provide your correct email id");
+                    return false;
+                } else {
+                    var y = document.forms["reg"]["pass"].value;
+                    if (y == "") {
+                        alert("Please provide your password");
+                        return false;
+                    } else if (y.length < 5) {
+                        alert("Password length cannot be less than 5 characters");
+                        return false;
+                    } else {
+                        // var ch = document.forms["reg"]["check"].value;
+                        if (document.getElementById("check").checked == false) {
+                            alert("Checkbox must be checked");
+                            return false;
+                        }
+                    }
+                }
+            }
         }
     </script>
 </body>
